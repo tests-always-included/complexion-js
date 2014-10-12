@@ -93,6 +93,16 @@
                     'IDENTIFIER_NAME:elephant'
                 ]);
             });
+            it('does not think toString is a keyword', function () {
+                expect(tokenize('toString')).toEqual([
+                    'IDENTIFIER_NAME:toString'
+                ]);
+            });
+            it('flags keywords as keywords', function () {
+                expect(tokenize('default')).toEqual([
+                    'KEYWORD:default'
+                ]);
+            });
         });
         describe('IMPLICIT_SEMICOLON', function () {
             it('is added when the flag is set', function () {
@@ -400,6 +410,54 @@
                 expect(tokenize('\t\x0b\x0c \xa0')).toEqual([
                     'WHITESPACE:\t\x0b\x0c \xa0'
                 ]);
+            });
+        });
+        describe('"end" event post-processing', function () {
+            describe('converting keywords to identifier names', function () {
+                it('converts keywords in objects', function () {
+                    // Does not trigger behavior
+                    expect(tokenize('{default toString}')).toEqual([
+                        'PUNCTUATOR:{',
+                        'KEYWORD:default',
+                        'WHITESPACE: ',
+                        'IDENTIFIER_NAME:toString',
+                        'PUNCTUATOR:}'
+                    ]);
+
+                    // Will trigger behavior
+                    expect(tokenize('return {default:toString};')).toEqual([
+                        'KEYWORD:return',
+                        'WHITESPACE: ',
+                        'PUNCTUATOR:{',
+                        'IDENTIFIER_NAME:default',
+                        'PUNCTUATOR::',
+                        'IDENTIFIER_NAME:toString',
+                        'PUNCTUATOR:}',
+                        'PUNCTUATOR:;'
+                    ]);
+                });
+                it('converts keywords as property names', function () {
+                    // Does not trigger behavior
+                    expect(tokenize('x return default')).toEqual([
+                        'IDENTIFIER_NAME:x',
+                        'WHITESPACE: ',
+                        'KEYWORD:return',
+                        'WHITESPACE: ',
+                        'KEYWORD:default'
+                    ]);
+
+                    // Will trigger behavior
+                    expect(tokenize('x.return.default=[]')).toEqual([
+                        'IDENTIFIER_NAME:x',
+                        'PUNCTUATOR:.',
+                        'IDENTIFIER_NAME:return',
+                        'PUNCTUATOR:.',
+                        'IDENTIFIER_NAME:default',
+                        'PUNCTUATOR:=',
+                        'PUNCTUATOR:[',
+                        'PUNCTUATOR:]'
+                    ]);
+                });
             });
         });
     });
