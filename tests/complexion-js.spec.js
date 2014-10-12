@@ -415,7 +415,7 @@
         describe('"end" event post-processing', function () {
             describe('converting keywords to identifier names', function () {
                 it('converts keywords in objects', function () {
-                    // Does not trigger behavior
+                    // Does not trigger behavior with "default"
                     expect(tokenize('{default toString}')).toEqual([
                         'PUNCTUATOR:{',
                         'KEYWORD:default',
@@ -424,12 +424,12 @@
                         'PUNCTUATOR:}'
                     ]);
 
-                    // Will trigger behavior
+                    // Still won't trigger behavior with "default"
                     expect(tokenize('return {default:toString};')).toEqual([
                         'KEYWORD:return',
                         'WHITESPACE: ',
                         'PUNCTUATOR:{',
-                        'IDENTIFIER_NAME:default',
+                        'KEYWORD:default',
                         'PUNCTUATOR::',
                         'IDENTIFIER_NAME:toString',
                         'PUNCTUATOR:}',
