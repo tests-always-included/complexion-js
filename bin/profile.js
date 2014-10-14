@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-var Complexion, complexion, fs;
+var Complexion, complexion, EasyTable, fs;
 
-require('console.table');
+EasyTable = require('easy-table');
 Complexion = require('complexion');
 fs = require('fs');
 complexion = new Complexion();
@@ -16,7 +16,7 @@ if (!process.argv[2]) {
 }
 
 fs.readFile(process.argv[2], 'utf-8', function (err, data) {
-    var last, result, start, tokenList;
+    var last, start, table, tokenList;
 
     if (err) {
         throw err;
@@ -26,6 +26,7 @@ fs.readFile(process.argv[2], 'utf-8', function (err, data) {
     tokenList = complexion.tokenize(data.toString());
     console.log(tokenList.length + ' tokens in ' + ((new Date()) - start) + ' ms');
     last = null;
+    table = new EasyTable();
 
     if (tokenList.some(function (token) {
         return token.type === 'UNKNOWN';
@@ -33,7 +34,7 @@ fs.readFile(process.argv[2], 'utf-8', function (err, data) {
         console.log('UNKNOWN TOKEN FOUND! - Bad parsing rules or invalid JavaScript');
     }
 
-    result = complexion.timeMap.profiles.map(function (profile) {
+    complexion.timeMap.profiles.map(function (profile) {
         var stats;
 
         stats = {
@@ -51,6 +52,11 @@ fs.readFile(process.argv[2], 'utf-8', function (err, data) {
         last = stats;
 
         return stats;
+    }).map(function (stats) {
+        Object.keys(stats).forEach(function (key) {
+            table.cell(key, stats[key]);
+        });
+        table.newRow();
     });
-    console.table(result);
+    console.log(table.toString());
 });
