@@ -1,6 +1,6 @@
 {
     "name": "complexion-js",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "Tokenize JavaScript",
     "author": "Tyler Akins <fidian@rumkin.com>",
     "homepage": "https://github.com/tests-always-included/complexion-js",
