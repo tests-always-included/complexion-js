@@ -117,6 +117,17 @@
                     'IDENTIFIER_NAME:i'
                 ]);
             });
+            it('is not added when a semicolon exists', function () {
+                expect(tokenize('a++; \n--b')).toEqual([
+                    'IDENTIFIER_NAME:a',
+                    'PUNCTUATOR:++',
+                    'PUNCTUATOR:;',
+                    'WHITESPACE: ',
+                    'LINE_TERMINATOR:\n',
+                    'PUNCTUATOR:--',
+                    'IDENTIFIER_NAME:b'
+                ]);
+            });
         });
         describe('KEYWORD', function () {
             it('remembers a keyword from IDENTIFIER_NAME that is not a boolean', function () {
