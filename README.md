@@ -3,10 +3,10 @@ Complexion - JavaScript
 
 Extends the [Complexion] tokenizing library so it is able to parse JavaScript into tokens.  Useful if you want to create a JavaScript pretty printer, parser or anything that would need to understand the syntax of JavaScript.
 
-[![NPM][npm-image]][NPM]
-[![Build Status][travis-image]][Travis CI]
-[![Dependencies][dependencies-image]][Dependencies]
-[![Dev Dependencies][devdependencies-image]][Dev Dependencies]
+[![npm version][npm-badge]][npm-link]
+[![Build Status][travis-badge]][travis-link]
+[![Dependencies][dependencies-badge]][dependencies-link]
+[![Dev Dependencies][devdependencies-badge]][devdependencies-link]
 
 
 Usage
@@ -116,13 +116,15 @@ License
 
 This software is licensed under an [MIT license with an additional non-advertising clause](LICENSE.md).
 
+
 [Complexion]: https://github.com/tests-always-included/complexion
-[Dev Dependencies]: https://david-dm.org/tests-always-included/complexion-js#info=devDependencies
-[devdependencies-image]: https://david-dm.org/tests-always-included/complexion-js/dev-status.png
-[Dependencies]: https://david-dm.org/tests-always-included/complexion-js
-[dependencies-image]: https://david-dm.org/tests-always-included/complexion-js.png
+[dependencies-badge]: https://img.shields.io/david/tests-always-included/complexion-js.svg
+[dependencies-link]: https://david-dm.org/tests-always-included/complexion-js
+[devdependencies-badge]: https://img.shields.io/david/dev/tests-always-included/complexion-js.svg
+[devdependencies-link]: https://david-dm.org/tests-always-included/complexion-js#info=devDependencies
 [FidUmd]: https://github.com/fidian/fid-umd/
-[NPM]: https://npmjs.org/package/complexion-js
-[npm-image]: https://nodei.co/npm/complexion-js.png?downloads=true&stars=true
-[travis-image]: https://secure.travis-ci.org/tests-always-included/complexion-js.png
-[Travis CI]: http://travis-ci.org/tests-always-included/complexion-js
+[LICENSE]: LICENSE.md
+[npm-badge]: https://img.shields.io/npm/v/complexion-js.svg
+[npm-link]: https://npmjs.org/package/complexion-js
+[travis-badge]: https://img.shields.io/travis/tests-always-included/complexion-js/master.svg
+[travis-link]: http://travis-ci.org/tests-always-included/complexion-js
