@@ -36,7 +36,7 @@
         "complexion-time-map": ">=0.1.1",
         "easy-table": "*",
         "fid-umd": "*",
-        "grunt": "~0.4.1",
+        "grunt": "~1.0.1",
         "grunt-benchmark": "*",
         "grunt-cli": "*",
         "grunt-jasmine-node": "*",
