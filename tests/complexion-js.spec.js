@@ -401,6 +401,39 @@
                 });
             });
         });
+        describe('TEMPLATE_STRING', function () {
+            [
+                '``', // Empty
+                "`\\r\\n`",  // Properly escaped newlines in single quotes
+                "`\\0`",  // NULL
+                "`\\xfF\\u0123\\12\\012\\321`",  // Escaped characters
+                "`random string \\a\\b\\c\\d\\e`",  // Letters that do not need escaping
+                "`${id}`", // Properly closed identifier
+                "`{literal}`", // Curly braces with no $
+                "`{literal`" // Curly braces with no $
+            ].forEach(function (str) {
+                it('matches a valid template string: ' + JSON.stringify(str), function () {
+                    var result;
+
+                    result = tokenize(str + 'xyz');
+                    expect(result[0]).toEqual('TEMPLATE_STRING:' + str);
+                });
+            });
+            [
+                "`\n`",  // Must not have a newline
+                "`",  // Must be closed
+                "\"`",  // Must be properly closed
+                "`\\\n`",  // Can not escape a newline character,
+                "`${id`" // Unclosed  identifier
+            ].forEach(function (str) {
+                it('does not match an invalid string: ' + JSON.stringify(str), function () {
+                    var result;
+
+                    result = tokenize(str + 'xyz');
+                    expect(result[0]).toEqual('UNKNOWN:' + str.charAt(0));
+                });
+            });
+        });
         describe('UNKNOWN', function () {
             it('matches odd characters', function () {
                 // Start with a hash but not a shebang.
