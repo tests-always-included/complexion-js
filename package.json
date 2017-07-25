@@ -1,6 +1,6 @@
 {
     "name": "complexion-js",
-    "version": "0.1.5",
+    "version": "0.2.0",
     "description": "Tokenize JavaScript",
     "author": "Tyler Akins <fidian@rumkin.com>",
     "homepage": "https://github.com/tests-always-included/complexion-js",
@@ -29,22 +29,19 @@
         "fast"
     ],
     "peerDependencies": {
-        "complexion": ">=0.1.3"
+        "complexion": "^0.2.0"
     },
     "devDependencies": {
-        "complexion": ">=0.1.3",
-        "complexion-time-map": ">=0.1.1",
-        "easy-table": "*",
-        "fid-umd": "*",
-        "grunt": "~1.0.1",
-        "grunt-benchmark": "*",
-        "grunt-cli": "*",
-        "grunt-jasmine-node": "*",
-        "grunt-jslint": "*"
+        "complexion": "^0.2.0",
+        "complexion-time-map": "^1.1.0",
+        "easy-table": "^1.1.0",
+        "eslint": "^4.3.0",
+        "fid-umd": "^2.0.5",
+        "jasmine": "^2.6.0"
     },
     "license": "MIT",
     "scripts": {
-        "test": "grunt test",
+        "test": "jasmine && eslint .",
         "umd": "fid-umd lib/*.js"
     }
 }
