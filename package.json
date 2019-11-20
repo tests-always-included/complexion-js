@@ -1,6 +1,6 @@
 {
     "name": "complexion-js",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Tokenize JavaScript",
     "author": "Tyler Akins <fidian@rumkin.com>",
     "homepage": "https://github.com/tests-always-included/complexion-js",
@@ -29,15 +29,15 @@
         "fast"
     ],
     "peerDependencies": {
-        "complexion": "^0.2.0"
+        "complexion": "^0.2.1"
     },
     "devDependencies": {
-        "complexion": "^0.2.0",
+        "complexion": "^0.2.1",
         "complexion-time-map": "^1.1.0",
-        "easy-table": "^1.1.0",
-        "eslint": "^4.3.0",
+        "easy-table": "^1.1.1",
+        "eslint": "^6.6.0",
         "fid-umd": "^2.0.5",
-        "jasmine": "^2.6.0"
+        "jasmine": "^3.5.0"
     },
     "license": "MIT",
     "scripts": {
