@@ -35,7 +35,7 @@
         "complexion": "^0.2.2",
         "complexion-time-map": "^1.1.0",
         "easy-table": "^1.1.1",
-        "eslint": "^7.26.0",
+        "eslint": "^9.39.1",
         "fid-umd": "^2.0.5",
         "jasmine": "^3.7.0"
     },
